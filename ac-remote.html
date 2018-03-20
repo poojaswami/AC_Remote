@@ -1,0 +1,100 @@
+<html>
+	<head>
+		<title>AC Remote</title>
+		<style>
+			#ac{
+				position:relative;
+			}
+			#ac_inner{
+				position:absolute;
+				top:83px;
+				left:742px;
+				height:40px;
+				width:40px;
+				color:#7ABFFB;
+				font-size:35px;
+				background-color:#2B7AC0;
+				border-radius:15px;
+			}
+			#ac_power{
+				position:absolute;
+				top:169px;
+				left:759px;
+				height:7px;
+				width:7px;
+				background-color:lightgrey;
+				border-radius:4px;
+			}
+			#remote{
+				border:3px solid lightgrey;
+				height:220px;
+				width:120px;
+				border-radius:50px;
+				margin-top:10px;
+				margin-left:700px;
+				box-shadow:5px 5px 5px 0px lightgrey;
+			}
+			button{
+				margin-top:30px;
+				border-radius:25px;
+				font-weight:bold;
+				font-size:30px;
+				height:40px;
+				width:40px;
+			}
+			#powerimage{
+				background-image:url("power.png");
+				height:50px;
+				width:50px;
+				border:none;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="ac" align="center">
+			<img src="ac.jpeg" height="425px" width="1000px">
+			<div id="ac_inner"></div>
+			<div id="ac_power"></div>
+		</div>
+		<div id="remote" align="center">
+			<button type="button" id="powerimage" onclick="on_off()"></button><br><br>
+			<button type="button" onclick="minus()">-</button>
+			<button type="button" onclick="plus()">+</button>
+		</div>
+		
+		<script>
+			var count=0;
+			function on_off(){
+				if(count%2==0){
+					document.getElementById("ac_power").style.backgroundColor="red";
+					document.getElementById("ac_power").style.boxShadow="0 0 10px red";
+					document.getElementById("ac_inner").innerHTML = 17;
+					count++;
+				}
+				else{
+					document.getElementById("ac_power").style.backgroundColor="lightgrey";
+					document.getElementById("ac_power").style.boxShadow="none";
+					document.getElementById("ac_inner").innerHTML = "";
+					count++;
+				}
+				
+			}
+			
+			function plus(){
+				var a = Number(document.getElementById("ac_inner").innerHTML);
+				if(a>=17&&a<30){
+					a++;
+					document.getElementById("ac_inner").innerHTML = a;
+				}
+			}
+			function minus(){
+				var a = Number(document.getElementById("ac_inner").innerHTML);
+				if(a>17&&a<=30){
+					a--;
+					document.getElementById("ac_inner").innerHTML = a;
+				}
+			}
+		</script>
+	</body>
+</html>
